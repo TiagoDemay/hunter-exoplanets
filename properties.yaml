@@ -1,0 +1,15 @@
+######################################################################################################################
+### GLOBAL OBJECTS RUN SETUP - All sectors analysed at once
+######################################################################################################################
+###
+TARGETS:
+  'TIC 259377017': 
+    SECTORS: [5]
+    AUTO_DETREND_ENABLED: False
+    INITIAL_HIGH_RMS_MASK: True
+    INITIAL_SMOOTH_ENABLED: False
+    BEST_SIGNAL_ALGORITHM: 'quorum'
+    MAX_RUNS: 5
+    DETRENDS_NUMBER: 12
+    DETREND_CORES: 7
+    CPU_CORES: 7
