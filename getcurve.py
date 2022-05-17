@@ -4,9 +4,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from astropy.io import fits
 
-missao = os.environ.get('MISSION')
-setor = os.environ.get('SECTOR')
-target_id = os.environ.get('TARGERT_ID')
+missao = os.environ['MISSION']
+setor = os.environ['SECTOR']
+target_id = os.environ['TARGET_ID']
+
+print(missao,setor,target_id)
 #missao=input("Qual é a Missão? ")
 #setor=input("Qual é o setor? ")
 #target_id = input("Nos dê o seu TargetID: ")
