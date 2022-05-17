@@ -29,3 +29,28 @@ lc.to_fits(path='output/file.fits', overwrite=True)
 #    bls = lc.to_periodogram(method='bls', period=period, frequency_factor=500)
 #    bls.plot()
 #    plt.savefig('output/{}_{}.png'.format(l,l+1))
+
+#lc=lk.read('output/file.fits')
+
+# Create array of periods to search
+period = np.linspace(1,20, 10000)
+# Create a BLSPeriodogram
+bls = lc.to_periodogram(method='bls', period=period, frequency_factor=500)
+
+# Searching for the biggest transit
+planet_x_period = bls.period_at_max_power
+planet_x_t0 = bls.transit_time_at_max_power
+planet_x_dur = bls.duration_at_max_power
+
+# Check the value for period
+print("periodo do planeta X",planet_x_period)
+
+# Create a BLS model using the BLS parameters
+planet_x_model = bls.get_transit_model(period=planet_x_period,
+                                       transit_time=planet_x_t0,
+                                       duration=planet_x_dur)
+
+ax = lc.fold(planet_x_period, planet_x_t0).scatter()
+planet_x_model.fold(planet_x_period, planet_x_t0).plot(ax=ax, c='r', lw=2)
+ax.set_xlim(-5, 5)
+plt.savefig('output/period_found_{:.2f}.png'.format(planet_x_period))
