@@ -1,18 +1,23 @@
+import os
 import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
 from astropy.io import fits
 
+missao = os.environ.get('MISSION')
+setor = os.environ.get('SECTOR')
+target_id = os.environ.get('TARGERT_ID')
 #missao=input("Qual é a Missão? ")
 #setor=input("Qual é o setor? ")
 #target_id = input("Nos dê o seu TargetID: ")
-#search_result = lk.search_lightcurve(target_id, mission=missao, sector=setor)
-search_result = lk.search_lightcurve('TIC 251848941', mission='TESS', sector=2)
+search_result = lk.search_lightcurve(target_id, mission=missao, sector=setor)
+#search_result = lk.search_lightcurve('TIC 251848941', mission='TESS', sector=2)
 
 lc = search_result.download(quality_bitmask='default')
 lc = lc.remove_nans().remove_outliers()
 lc.scatter()
-lc.to_fits(path='output/file.fits', overwrite=True)
+filename = "output/%s.fits" % target_id
+lc.to_fits(path=filename, overwrite=True)
 
 # Number of cadences in the full light curve
 #cadencia_max=lc.time.shape
@@ -43,7 +48,7 @@ planet_x_t0 = bls.transit_time_at_max_power
 planet_x_dur = bls.duration_at_max_power
 
 # Check the value for period
-print("periodo do planeta X",planet_x_period)
+print("Check the value for period",planet_x_period)
 
 # Create a BLS model using the BLS parameters
 planet_x_model = bls.get_transit_model(period=planet_x_period,
