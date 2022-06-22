@@ -3,6 +3,7 @@ import os
 import lightkurve as lk
 import matplotlib.pyplot as plt
 import numpy as np
+import requests
 from astropy.io import fits
 
 
