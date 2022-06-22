@@ -43,7 +43,7 @@ try:
         planet_x_model.fold(planet_x_period, planet_x_t0).plot(ax=ax, c='r', lw=2)
         ax.set_xlim(-5, 5)
         plt.savefig('output/period_found_{:.2f}.png'.format(planet_x_period))
-        print("=================================NEXT TARGET ===============================>
+        print("=================================NEXT TARGET ===============================>)
 except:
         print("PROBLEM WITH TARGET",target_id)
 
