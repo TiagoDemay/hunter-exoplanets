@@ -9,7 +9,7 @@ from io import BytesIO
 from zipfile import ZipFile
 from astropy.io import fits
 from astropy.utils.data import download_file
-from astropy.stats import BoxLeastSquares
+from astropy.timeseries import BoxLeastSquares
 
 # A function to estimate the windowed scatter in a lightcurve
 def estimate_scatter_with_mask(mask):
