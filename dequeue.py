@@ -11,7 +11,6 @@ from astropy.io import fits
 from astropy.utils.data import download_file
 from astropy.stats import BoxLeastSquares
 
-
 # A function to estimate the windowed scatter in a lightcurve
 def estimate_scatter_with_mask(mask):
     f = np.sum(flux[:, mask], axis=-1)
